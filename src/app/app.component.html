@@ -1,0 +1,58 @@
+
+<nav class="navbar transparent navbar-inverse navbar-fixed-top d-none d-sm-block">
+  <div class="container ">
+    <div class="navbar-inner ">
+      <a [routerLink]="['home']"><img src="assets/img/Layer_15.png" width="100px"></a>
+      <a href="https://www.facebook.com/"><img src="assets/img/facebook.png" class="pl-5"></a>
+      <a href="https://www.instagram.com/?hl=ru"><img src="assets/img/insta.png" class="px-4"></a>
+      <a href="https://www.youtube.com/?gl=UA"><img src="assets/img/youtube.png" class="pr-5"></a>
+    </div>
+    <div class="navbar-inner" id="inner2">
+      <a routerLink="/" class="text-light h6">Головна </a>
+      <a routerLink="/travel-routes" class="text-light h6 px-3">Маршрути </a>
+      <a routerLink="/tourslist" class=" text-light h6 pr-1">Екскурсії </a>
+      <a routerLink="/attractions" class=" text-light px-3 h6">Атракції </a>
+      <a routerLink="/hotels" class=" text-light h6 ">Гастро та готелі </a>
+      <a routerLink="/events" class=" text-light h6 px-3">Події </a>
+      <div class="dropdown" style="display: inline;">
+        <button class="btn btn-secondary" style="background-color: inherit; border: 0px;" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="assets/img/tabsico.png" width="25px" style="padding: 0px;transform: translate(0px, -3px);">
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
+          <button class="dropdown-item" type="button">
+            <a routerLink="/gids">Гіди</a>
+          </button>
+          <button class="dropdown-item" type="button">
+            <a routerLink="#">Як дістатися Кривого Рогу</a>
+          </button>
+          <button class="dropdown-item" type="button">
+            <a routerLink="/account">Особистий кабінет</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="d-none d-block d-sm-none" style="display: block; background-color: rgb(0, 0, 0);">
+  <div class="dropdown ">
+    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+      <img src="assets/img/tabsico.png" width="25px">
+    </button>
+    <div class="dropdown-menu" style="text-align: center;
+    width: 97%;">
+      <a routerLink="/" class="text-dark h6">Головна </a><hr>
+          <a routerLink="/travel-routes" class="text-dark h6">Маршрути </a><hr>
+          <a routerLink="/attractions" class="text-dark h6">Атракції </a><hr>
+          <a routerLink="/tourslist" class=" text-dark h6">Екскурсії </a><hr>
+          <a routerLink="/hotels" class="text-dark h6">Гастро та готелі </a><hr>
+          <a routerLink="/events" class="text-dark h6">Події </a><hr>
+          <a routerLink="/gids" class="text-dark h6">Гіди</a><hr>
+          <a routerLink="#" class="text-dark h6">Як дістатися</a><hr>
+          <a routerLink="/account" class="text-dark h6">Аккаунт</a><br>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+

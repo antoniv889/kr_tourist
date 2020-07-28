@@ -1,0 +1,127 @@
+import { Component, ViewChild , Input, OnInit} from '@angular/core';
+import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DataService } from '../services/data.service';
+
+
+@Component({
+  selector: 'ngbd-modal-content',
+  template: `
+
+    <div class="modal-header" width="100px">
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" style="height: 300px;">
+      <input type="text" placeholder="text" style="border-color: #c9c9c9; border-radius: 5px; width: 70%;">
+      <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')" style="height:30px; margin-bottom: 4px; margin-left:6%;">
+        <p style="transform: translate(0,-25%)">Search</p>
+      </button>
+    </div>
+  `
+})
+export class NgbdModalContent {
+  @Input() name;
+
+  constructor(public activeModal: NgbActiveModal) {}
+}
+
+
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit {
+  title = 'kriviyRih';
+  images = ['assets/img/Layer_3.png', 'assets/img/color.jpg'];
+  paused = false;
+  unpauseOnArrow = false;
+  pauseOnIndicator = false;
+  showNavigationArrows = false;
+  pauseOnHover = false;
+  showNavigationIndicators = false;
+  @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
+  togglePaused() {
+    if (this.paused) {
+      this.carousel.cycle();
+    } else {
+      this.carousel.pause();
+    }
+    this.paused = !this.paused;
+  }
+  onSlide(slideEvent: NgbSlideEvent) {
+    if (this.unpauseOnArrow && slideEvent.paused &&
+      (slideEvent.source === NgbSlideEventSource.ARROW_LEFT || slideEvent.source === NgbSlideEventSource.ARROW_RIGHT)) {
+      this.togglePaused();
+    }
+    if (this.pauseOnIndicator && !slideEvent.paused && slideEvent.source === NgbSlideEventSource.INDICATOR) {
+      this.togglePaused();
+    }
+  }
+  constructor(private modalService: NgbModal, private dataService: DataService) {}
+  open() {
+    const modalRef = this.modalService.open(NgbdModalContent);
+  }
+  categories:any = [];
+  routes:any = [];
+  routeImages: any = [];
+
+  ngOnInit(){
+    this.getCategories();
+    this.getPosts();
+    this.getEvents();
+    this.getGids();
+
+  }
+  getCategories(){
+    this.dataService.getCategories(1).subscribe(res=>{
+      this.categories = res;
+      console.log(this.categories);
+    })
+  }
+  routesLength:number;
+  getPosts(){
+    this.dataService.getPostList(1).subscribe(res=>{
+      this.routes = res;
+      console.log(this.routes);
+      this.routesLength = this.routes.length;
+
+      for(let i=0;i<this.routes.length;i++){
+        this.dataService.getMediaUrl(this.routes[i].id).subscribe(res=>{
+          this.routeImages[i] = res;
+        });
+      }
+    });
+  }
+  gids:any = [];
+  gidImages:any = [];
+  getGids(){
+    this.dataService.getGids().subscribe(res=>{
+      this.gids = res;
+      console.log(this.gids);
+      for(let i = 0; i < this.gids.length; i++){
+        this.dataService.getGid(this.gids[i].id).subscribe(response=>{
+          this.gidImages[i] = response[1];
+
+        })
+      }
+    })
+  }
+  events:any = [];
+  eventImages: any = [];
+  getEvents(){
+    this.dataService.getPostList(6).subscribe(res=>{
+      this.events = res;
+      for(let i=0;i<4;i++){
+        this.dataService.getMediaUrl(this.events[i].id).subscribe(res=>{
+          this.eventImages[i] = res;
+        });
+      }
+      console.log(this.eventImages);
+    })
+  }
+
+}

@@ -1,0 +1,71 @@
+.icon:hover{
+  border: 1px solid rgba(0,0,0,0.0);
+}
+#mobile{
+  background-color:#002b54;
+  height: 400px;
+  margin-top: 20%;
+}
+.bottomRight{
+  position: relative;
+  top:85%;
+  text-align: right;
+  font-size: 18px;
+}
+
+agm-map{
+  width: 350px;
+  height: 800px;
+}
+.comment{
+  display: block;
+  border-radius: 3px;
+  background-color: #dcdcdc38;
+  padding-top: 15px;
+}
+.picsum-img-wrapper{
+  width: 100%;
+  height: 80vh;
+  background-position: center;
+  -moz-background-size: 100%; /* Firefox 3.6+ */
+  -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+  -o-background-size: 100%; /* Opera 9.6+ */
+  position: relative;
+  text-align: left;
+  color:white;
+	box-shadow: inset 0px 30px 925px rgb(0, 0, 1);
+  background-size: 100%; /* Современные браузеры */
+}
+.bottom-left {
+  position: absolute;
+  bottom: 25px;
+  /* left: 85px; */
+}
+#card {
+  background-color:rgb(250, 250, 250);
+  border-radius: 2px;
+  padding: 20px;
+}
+.commentContent{
+  padding: 15px;
+}
+#map {
+  position: sticky;
+  top: 50px;
+}
+.loader {
+  border: 7px solid #f1f1f1;
+  border-top: 7px solid #FD2E54;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 1s linear infinite;
+  margin-top: 30%;
+  margin-left: 36%;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,34 @@
+.btn-block{
+  background-color: #002B54;
+  color: white;
+}
+.icon:hover{
+  border: 1px solid rgba(0,0,0,0.0);
+}
+.comment{
+  display: block;
+  border-radius: 3px;
+  background-color: #dcdcdc38;
+  padding-top: 15px;
+}
+.commentContent{
+  padding: 15px;
+}
+#mobile{
+  background-color:#002b54;
+  height: 400px;
+  margin-top: 20%;
+}
+.bottomRight{
+  position: relative;
+  top:85%;
+  text-align: right;
+  font-size: 18px;
+}
+.col-sm{
+  margin-bottom: 20px;
+}
+.col-sm img{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

@@ -1,0 +1,235 @@
+<!-- desktop -->
+<div class="d-none d-sm-block">
+  <ngb-carousel class="carousel" #carousel [interval]="6000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+    <ng-template ngbSlide id="one">
+      <div class="picsum-img-wrapper" style="background-image: url({{routeImages[routesLength-1]}}); background-repeat: no-repeat;">
+        <b class="sideVerticalText">новий маршрут</b>
+        <div class="container p-relative">
+          <div class="bottom-left">
+            <h3 class="text-uppercase"> {{routes[routesLength-1].title}} </h3>
+            <p>
+              {{ (routes[routesLength-1].desc.length>120)? (routes[routesLength-1].desc | slice:0:120)+'...':(routes[routesLength-1].desc) }}
+
+              <br><br>
+              <button type="button" class="btn btn-outline-light btnSlider" routerLink="/travel-routes/1/{{routes[routesLength-1].id}}">Читати далі</button>
+              <br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide id="two" *ngIf="routes[routesLength-2]">
+    <div class="picsum-img-wrapper" style="background-image: url({{routeImages[routesLength-2]}}); background-repeat: no-repeat;">
+      <div class="container p-relative">
+        <div class="bottom-left">
+          <h3 class="text-uppercase"> {{routes[routesLength-2].title}} </h3>
+          <p>
+            {{ (routes[routesLength-2].desc.length>120)? (routes[routesLength-2].desc | slice:0:120)+'...':(routes[routesLength-2].desc) }}
+            <br><br>
+            <button type="button" class="btn btn-outline-light btnSlider" routerLink="/travel-routes/1/{{routes[routesLength-2].id}}">Читати далі</button>
+            <br>
+          </p>
+        </div>
+      </div>
+    </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+
+<!-- mobile -->
+
+<div class="d-none d-block d-sm-none">
+  <ngb-carousel class="carousel" #carousel [interval]="6000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+    <ng-template ngbSlide id="one">
+      <div class="picsum-img-wrapper" style="background-image: url({{routeImages[routesLength-1]}}); background-repeat: no-repeat;">
+        <b class="sideVerticalText">новий маршрут</b>
+        <div class="p-relative ">
+          <div class="mobile_slider">
+            <h3 class="text-uppercase"> {{routes[routesLength-1].title}} </h3>
+            <p>
+              {{ (routes[routesLength-1].desc.length>60)? (routes[routesLength-1].desc | slice:0:60)+'...':(routes[routesLength-1].desc) }}
+              <br><br>
+              <button type="button" class="btn btn-outline-light btnSlider" routerLink="/travel-routes/1/{{routes[routesLength-1].id}}">Читати далі</button>
+              <br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide id="two">
+      <div class="picsum-img-wrapper" style="background-image: url({{routeImages[routesLength-2]}}); background-repeat: no-repeat;">
+        <b class="sideVerticalText">новий маршрут</b>
+        <div class="p-relative ">
+          <div class="mobile_slider">
+            <h3 class="text-uppercase"> {{routes[routesLength-2].title}} </h3>
+            <p>
+              {{ (routes[routesLength-2].desc.length>60)? (routes[routesLength-2].desc | slice:0:60)+'...':(routes[routesLength-2].desc) }}
+              <br><br>
+              <button type="button" class="btn btn-outline-light btnSlider" routerLink="/travel-routes/1/{{routes[routesLength-2].id}}">Читати далі</button>
+              <br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+
+
+<!-- desktop -->
+<div class="container d-none d-sm-block">
+  <br>
+  <h3 class="text-primary ">Маршрути</h3>
+  <br>
+  <div class="row">
+    <div *ngFor="let categorie of categories; index as i" style="width:33%; display: inline-block; text-align: center; margin-bottom: 20px;">
+      <div class="col-sm">
+          <a routerLink="/travel-routes/{{categorie.id}}">
+            <button class="btn btn-light">
+              <img src="assets/img/ellipse.png" class="image1">
+              <img src="assets/img/vaza.png" class="image2-1">
+              <h1 class="routes-main" >{{categorie.title}}</h1>
+              <p>Історія міста починається з 1775 року і налічує багато цікавих, фактів тощо.
+                Щоб взнати місто краще, треба відвідати етнографічні маршрути.
+              </p>
+            </button>
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- mobile -->
+<div class="container d-none d-block d-sm-none">
+  <br>
+  <h3 class="text-primary">Маршрути</h3>
+  <br>
+    <div *ngFor="let categorie of categories; index as i" style="display: inline-block; text-align: center; margin-bottom: 20px;">
+      <div class="card" style="height: 300px;">
+        <a routerLink="/travel-routes/{{categorie.id}}">
+          <img class="card-img-top" src="assets/img/ellipse.png" class="image1">
+          <img class="card-img-top" src="assets/img/vaza.png" class="image2-1">
+          <div class="card-body" >
+            <h1 class="routes-main card-text" >{{categorie.title}}</h1>
+            <p class="card-text">Історія міста починається з 1775 року і налічує багато цікавих, фактів тощо.
+              Щоб взнати місто краще, треба відвідати етнографічні маршрути.
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+</div>
+<br><br>
+
+
+<!-- desktop -->
+<div id="gids" class="d-none d-sm-block">
+  <br>
+  <div class="container">
+    <h3 class="text-primary ">Місцеві гіди</h3><br>
+
+    <div class="container">
+      <div *ngFor="let gid of gids;index as i"  style="width:33%; display: inline-block;">
+        <div *ngIf="i<3">
+          <div class="card gid-card card-desktop" >
+            <img class="card-img-top" src="{{gidImages[i]}}" height="300px" >
+            <div class="card-body" style="height: 200px;">
+              <h1>{{gid.name}}</h1>
+              <p class="card-text" style="word-wrap: break-word;">
+                  {{ (gid.desc.length>100)? (gid.desc | slice:0:100)+'...':(gid.desc) }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+</div>
+
+
+<!-- mobile -->
+<div id="gids" class="d-none d-block d-sm-none">
+  <br>
+  <div class="container">
+    <h3 class="text-primary ">Місцеві гіди</h3><br>
+
+    <div class="container">
+      <div *ngFor="let gid of gids;index as i">
+        <div *ngIf="i<3">
+          <div class="card gid-card" >
+            <img class="card-img-top" src="{{gidImages[i]}}" >
+            <div class="card-body" style="height: 150px;">
+              <h1>{{gid.name}}</h1>
+              <p class="card-text" style="word-wrap: break-word;">
+                  {{ (gid.desc.length>100)? (gid.desc | slice:0:100)+'...':(gid.desc) }}
+              </p>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+</div>
+
+<!-- desktop -->
+<div class="container d-none d-sm-block">
+    <br>
+    <h3 class="text-primary">Це цікаво</h3>
+    <br>
+    <div *ngFor="let event of events; index as i" style="width:25%; display: inline-block; ">
+      <div *ngIf="i<4">
+        <div class="card card-desktop">
+          <img class="card-img-top" src="{{eventImages[i]}}" height="200px" routerLink="/events/{{event.id}}">
+          <div class="card-body" routerLink="/events/{{event.id}}" >
+            <h3>{{event.title}}</h3>
+            <p style="word-wrap: break-word;">
+              {{ (event.desc.length>70)? (event.desc | slice:0:70)+'..':(event.desc) }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <br><br><br><br><br>
+</div>
+
+
+<!-- mobile -->
+
+<div class="container d-none d-block d-sm-none">
+  <br>
+  <h3 class="text-primary">Це цікаво</h3>
+  <br>
+  <div *ngFor="let event of events; index as i">
+    <div *ngIf="i<3">
+      <div class="card">
+        <img class="card-img-top" src="{{eventImages[i]}}" routerLink="/events/{{event.id}}">
+        <div class="card-body" routerLink="/events/{{event.id}}" >
+          <h3>{{event.title}}</h3>
+          <p style="word-wrap: break-word;">
+
+            {{ (event.desc.length>70)? (event.desc | slice:0:70)+'..':(event.desc) }}
+            <br>
+            <button type="button" class="btn btn-outline-light btnEvent" routerLink="/events/{{event.id}}">Читати далі</button>
+          </p>
+        </div>
+      </div><br>
+    </div>
+  </div>
+<br><br><br><br><br>
+</div>
+
+
+
+
+
+<div id="mobile">
+  <div class="bottomRight">
+    <a href="#"><img src="assets/img/google.png"  height="50px"  class="pr-2 "></a>
+    <a href="#"><img src="assets/img/appstore.png"  height="50px" class="pr-2"></a>
+  </div>
+</div>
+

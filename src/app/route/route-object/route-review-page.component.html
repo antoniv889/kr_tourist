@@ -1,0 +1,80 @@
+<div class="picsum-img-wrapper" style="background-image: url({{imgUrl}}); background-repeat: no-repeat;">
+  <div class="container p-relative">
+    <div class="bottom-left">
+      <div class="container">
+        <h1 class="text-uppercase">{{route.title}}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="container">
+  <div class="row" >
+      <div class="col-sm-4">
+      <div id="map">
+        <agm-map [latitude]="latitude[0]" [longitude]="longitude[0]" [zoom]="15">
+          <!-- <agm-direction
+          [origin]="origin"
+          [destination]="destination"
+          >
+          </agm-direction> -->
+          <agm-polyline *ngFor="let lat of latitude; index as i" [strokeColor]="'green'" [strokeWeight]="1" >
+              <agm-marker *ngIf="point_visited[i]==1" [latitude]="lat" [longitude]="longitude[i]" [animation]="'BOUNCE'"></agm-marker>
+              <agm-marker *ngIf="point_visited[i]==0" [latitude]="lat" [longitude]="longitude[i]" ></agm-marker>
+
+              <agm-polyline-point  *ngFor="let lat of latitude; index as i"  [latitude]="lat" [longitude]="longitude[i]" >
+              </agm-polyline-point>
+
+          </agm-polyline>
+        </agm-map>
+
+      </div>
+      </div>
+    <div class="col-sm-8">
+      <h1>{{route.title}}</h1><br>
+      <p>{{route.desc}}</p>
+
+      <ng-container *ngFor="let object of excursions; index as i">
+        <div id="card">
+          <div inViewport (inViewportAction)="fun(i)">
+            <a routerLink="/attractions/{{object[0][0].category_id}}/{{object[0][0].id}}">
+              <h3>{{object[0][0].title}}</h3>
+            </a>
+          </div>
+          <p>{{object[0][0].desc}}</p>
+          <img src="{{object[1]}}" width="100%">
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+        <br>
+      </ng-container>
+    </div>
+  </div>
+
+  <hr>
+  <h4>Коментарії:</h4>
+  <div class="form-group">
+    <div *ngFor="let comment of comments; index as i">
+      <div class="comment">
+        <span><b class="commentContent">{{commentAuthor[i]}}</b> <small>{{comment.created_at}}</small></span>
+          <p class="commentContent">{{comment.content}}</p>
+      </div>
+    </div><br><br>
+    <form (ngSubmit)="addComment(f)" #f="ngForm">
+      <div class="form-group">
+        <textarea rows="5" class="form-control" id="content" name="content" ngModel required></textarea>
+      </div>
+      <button type="submit" [disabled]="!f.valid" class="btn btn-success">Залишити коментар</button>
+    </form>
+  </div><hr>
+  <h4>Поділитися з друзями: </h4><hr>
+  <h4>Як дістатися?</h4>
+</div>
+<br><br>
+<div id="mobile">
+  <div class="bottomRight">
+    <a href="#"><img src="assets/img/google.png"  height="50px"  class="pr-2 "></a>
+    <a href="#"><img src="assets/img/appstore.png"  height="50px" class="pr-2"></a>
+  </div>
+</div>
+
+

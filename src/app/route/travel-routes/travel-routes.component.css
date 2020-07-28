@@ -1,0 +1,70 @@
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 85px;
+
+}
+.bottom-left h1{
+  font-size:40px;
+}
+.bottom-left p{
+  font-family: "Roboto";
+  font-size: 20px;
+  width: 800px;
+}
+
+.picsum-img-wrapper{
+  position: relative;
+  text-align: left;
+  color:white;
+}
+#routes{
+    font-family: "Roboto";
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-top:20px;
+}
+
+.col-sm{
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.image1 {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100px;
+}
+.image2-1 {
+  position: absolute;
+    top: 22px;
+    left: 42%;
+    width: 60px;
+}
+.image2-2 {
+  position: absolute;
+    top: 37px;
+    left:42%;
+    width: 60px;
+}
+.routes-main{
+  font-family: "Roboto";
+  letter-spacing: 4px;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+#mobile{
+  background-color:#002b54;
+  height: 400px;
+  margin-top: 20%;
+}
+.bottomRight{
+  position: relative;
+  top:85%;
+  text-align: right;
+  font-size: 18px;
+}
+
+

@@ -1,0 +1,68 @@
+<div class="d-none d-sm-block" style="background-color:#002b54; display: block; height: 109px;">
+</div>
+
+<div class="container">
+  <br>
+  <h1>{{event.title}}</h1><br>
+  <img src="{{imgUrl}}" width="600px" style="margin-left: 50%; transform: translate(-50%, 0);"><br><br>
+  <p>{{event.desc}}</p><br><hr>
+  <h3>Гіди:</h3><br>
+  <div class="container d-none d-sm-block">
+    <div *ngFor="let gids of postGids; index as i" style="width: 33%; display: inline-block;">
+      <div class="card card-desktop">
+        <img class="card-img-top" src="{{gids[1]}}" height="270px" >
+        <div class="card-body" >
+          <h1>{{gids[0][0].name}}</h1>
+          <p class="card-text">
+            {{gids[0][0].desc}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container d-none d-block d-sm-none">
+    <div *ngFor="let gids of postGids; index as i">
+      <div class="card" >
+        <img class="card-img-top" src="{{gids[1]}}" height="270px" >
+        <div class="card-body" >
+          <h1>{{gids[0][0].name}}</h1>
+          <p class="card-text">
+            {{gids[0][0].desc}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <hr>
+  <h3>Поділитися з друзями: </h3>
+  <div class="fb-share-button" data-href="http://localhost:54209/events/2" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A54209%2Fevents%2F2&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Поделиться</a></div>
+  <br><br>
+  <hr>
+  <h4>Коментарії:</h4>
+  <br>
+  <div class="form-group">
+    <div *ngFor="let comment of comments; index as i">
+      <div class="comment">
+        <span><b class="commentContent">{{commentAuthor[i]}}</b> <small>{{comment.created_at}}</small></span>
+          <p class="commentContent">{{comment.content}}</p>
+      </div>
+    </div><br>
+    <form (ngSubmit)="addComment(f)" #f="ngForm">
+      <div class="form-group">
+        <textarea rows="3" class="form-control" id="content" name="content" ngModel required></textarea>
+      </div>
+      <button type="submit" [disabled]="!f.valid" class="btn btn-success">Залишити коментар</button>
+    </form>
+  </div>
+</div>
+
+<br><br>
+
+<div id="mobile">
+  <div class="bottomRight">
+    <a href="#"><img src="assets/img/google.png"  height="50px"  class="pr-2 "></a>
+    <a href="#"><img src="assets/img/appstore.png"  height="50px" class="pr-2"></a>
+  </div>
+</div>

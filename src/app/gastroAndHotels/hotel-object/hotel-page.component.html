@@ -1,0 +1,39 @@
+<div style="background-color:#002b54; display: block; height: 109px;">
+</div>
+
+<div class="container">
+  <h1>Сторінка закладу</h1>
+  <div class="row">
+    <div class="col-sm" >
+      <img src="{{imgUrl}}" width="100%">
+      <h1>lorem</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <a href="https://www.google.com/maps/place/%D0%9F'%D1%8F%D0%BD%D0%B8%D0%B9+%D1%80%D0%B8%D0%BD%D0%BE%D0%BA/@48.6010965,22.2907555,15.38z/data=!4m5!3m4!1s0x4739190f635c44b9:0x70640d1d8269cf8f!8m2!3d48.6026799!4d22.2890925">Відкрити на карті</a>
+    </div>
+  </div><hr>
+  <h3>Коментарії:</h3>
+  <div class="form-group">
+    <div *ngFor="let comment of comments; index as i">
+      <div class="comment">
+        <span><b class="commentContent">{{commentAuthor[i]}}</b> <small>{{comment.created_at}}</small></span>
+          <p class="commentContent">{{comment.content}}</p>
+      </div>
+
+    </div><br><br>
+    <form (ngSubmit)="addComment(f)" #f="ngForm">
+      <div class="form-group">
+        <textarea rows="5" class="form-control" id="content" name="content" ngModel required></textarea>
+      </div>
+      <button type="submit" [disabled]="!f.valid" class="btn btn-success">Залишити коментар</button>
+    </form>
+  </div><hr>
+  <h3>Поділитися з друзями: </h3>
+</div>
+
+<br><br>
+<div id="mobile">
+  <div class="bottomRight">
+    <a href="#"><img src="assets/img/google.png"  height="50px"  class="pr-2 "></a>
+    <a href="#"><img src="assets/img/appstore.png"  height="50px" class="pr-2"></a>
+  </div>
+</div>

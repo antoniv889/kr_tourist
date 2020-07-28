@@ -1,0 +1,22 @@
+<div style="background-color:#002b54; display: block; height: 109px;">
+</div>
+
+<div style="width: 300px; margin-top: 200px; margin-left: 50%;
+transform: translate(-50%, 0px);">
+  <form (ngSubmit)="onSignIn(f)" #f="ngForm">
+    <div class="form-group">
+      <label for="email">Електронна пошта</label>
+      <input type="email" class="form-control" id="email" placeholder="введіть пошту"
+      name="email" ngModel required>
+    </div>
+    <div class="form-group">
+      <label for="password">Пароль</label>
+      <input type="password" class="form-control" id="password" placeholder="введіть пароль"
+      name="password" ngModel required>
+    </div>
+    <p style="color: red; text-align: center;">{{message}}</p>
+    <button type="submit" [disabled]="!f.valid" class="btn btn-outline-success btn-block">Увійти</button><hr>
+    <a routerLink="/registration"><button class="btn btn-outline-primary btn-block">Ще не зареєструвалися?</button></a>
+
+  </form>
+</div>
