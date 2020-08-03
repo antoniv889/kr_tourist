@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
-
 @Component({
   selector: 'app-route-review',
   templateUrl: './route-review.component.html',
@@ -30,34 +29,25 @@ import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/n
     }
     /deep/ .carousel-control-prev-icon{
       /* background-color: black; */
-
       height: 80px;
       width: 35px;
-    }
-
-  `]
+    }`]
 })
+
 export class RouteReviewComponent implements OnInit {
   id: any;
-  paused = true;
+  paused = false;
   unpauseOnArrow = false;
   pauseOnIndicator = false;
   showNavigationArrows = true;
   pauseOnHover = true;
-  showNavigationIndicators = true;
-  type: number = 1;
-
+  showNavigationIndicators = false;
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
+  type: number = 1;
 
   constructor(private activateRoute: ActivatedRoute, private dataService: DataService){
     this.id = activateRoute.snapshot.params['id'];
   }
-
-  ngOnInit(){
-    this.getPostByCategory();
-    this.getUserLikes();
-  }
-
   togglePaused() {
     if (this.paused) {
       this.carousel.cycle();
@@ -75,8 +65,10 @@ export class RouteReviewComponent implements OnInit {
       this.togglePaused();
     }
   }
-
-
+  ngOnInit(){
+    this.getPostByCategory();
+    this.getUserLikes();
+  }
   routes:any = [];
   routeImages: any = [];
   userLikes: any = [];
@@ -86,20 +78,23 @@ export class RouteReviewComponent implements OnInit {
 
 
   getPostByCategory(){
-    // console.log(12333);
 
     this.dataService.getPostByCategory(this.type,this.id).subscribe(res=>{
       this.routes = res;
+      console.log(res)
       for(let i=0;i<this.routes.length;i++){
         this.dataService.getMediaUrl(this.routes[i].id).subscribe(res=>{
           this.routeImages[i] = res;
+          console.log(res)
+
         });
         this.dataService.postlikes(this.routes[i].id).subscribe(res=>{
           this.data = res;
           this.postLikes[i] = this.data[this.data.length-1];
         });
       }
-      console.log(this.postLikes);
+
+      console.log(this.routeImages);
     })
   }
   userId:number = +this.user_id;

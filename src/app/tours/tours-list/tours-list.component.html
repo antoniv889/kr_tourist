@@ -10,7 +10,6 @@
         <div class="bottom-left">
           <h3 class="text-uppercase">{{ route.title }}</h3>
           <p>
-            {{ route.desc }}
             <br><br>
             <button type="button" class="btn btn-outline-light btnSlider" routerLink="{{i+1}}">Читати далі</button>
             <br>
@@ -32,7 +31,6 @@
         <div class="bottom-left">
           <h3 class="text-uppercase">{{ route.title }}</h3>
           <p>
-            {{ (route.desc.length>50)? (route.desc | slice:0:50)+'...':(route.desc) }}
             <br><br>
             <button type="button" class="btn btn-outline-light btnSlider" routerLink="{{i+1}}">Читати далі</button>
             <br>

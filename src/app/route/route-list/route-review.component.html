@@ -3,13 +3,13 @@
 <!-- desktop -->
 <div class="d-none d-sm-block">
   <ngb-carousel class="carousel" #carousel [interval]="6000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
-      <ng-template ngbSlide *ngFor="let route of routes; index as i" style="width:50%; display: inline-block;">
+
+      <ng-template ngbSlide *ngFor="let route of routes; index as i " >
         <div class="picsum-img-wrapper " style="background-image: url({{routeImages[i]}}); background-repeat: no-repeat;">
           <div class="container p-relative">
           <div class="bottom-left">
             <h3 class="text-uppercase">{{ route.title }}</h3>
             <p>
-              {{ (route.desc.length>120)? (route.desc | slice:0:120)+'...':(route.desc) }}
               <br><br>
               <button type="button" class="btn btn-outline-light btnSlider" routerLink="{{i+1}}">Читати далі</button>
               <br>
@@ -25,14 +25,13 @@
 
 <!-- mobile -->
 <div class="d-none d-block d-sm-none">
-  <ngb-carousel class="carousel" #carousel [interval]="6000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)" [showNavigationArrows]="false" [showNavigationIndicators]="false">
-    <ng-template ngbSlide *ngFor="let route of routes; index as i" style="width:50%; display: inline-block;">
+  <ngb-carousel class="carousel" #carousel [interval]="6000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+    <ng-template ngbSlide *ngFor="let route of routes; index as i" >
       <div class="picsum-img-wrapper " style="background-image: url({{routeImages[i]}}); background-repeat: no-repeat;">
         <div class="container p-relative">
         <div class="bottom-left">
           <h3 class="text-uppercase">{{ route.title }}</h3>
           <p>
-            {{ (route.desc.length>50)? (route.desc | slice:0:50)+'...':(route.desc) }}
             <br><br>
             <button type="button" class="btn btn-outline-light btnSlider" routerLink="{{i+1}}">Читати далі</button>
             <br>

@@ -65,7 +65,6 @@ export class NgbdModalContent {
 })
 export class HomeComponent implements OnInit {
   title = 'kriviyRih';
-  images = ['assets/img/Layer_3.png', 'assets/img/color.jpg'];
   paused = false;
   unpauseOnArrow = false;
   pauseOnIndicator = false;
@@ -94,6 +93,7 @@ export class HomeComponent implements OnInit {
   open() {
     const modalRef = this.modalService.open(NgbdModalContent);
   }
+
   categories:any = [];
   routes:any = [];
   routeImages: any = [];
