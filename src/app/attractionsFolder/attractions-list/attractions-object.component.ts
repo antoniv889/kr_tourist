@@ -49,32 +49,31 @@ export class AttractionsObjectComponent implements OnInit {
   }
   counter:number;
   numLikes:number = 0;
-  xpost_id:number;
-  userLikesPost(post_id:any, count:any){
+
+  userLikesPost(post_id:any, count:number){
+    this.numLikes = 0;
     if(!this.user_id){
       alert('Ви не увійшли в аккаунт');
     } else {
-      this.getUserLikes();
-      console.log(post_id);
-      console.log(count);
-      this.counter = +count;
-
       for(let i = 0; i < this.userLikes.length; i++){
-        if(this.userLikes[i].post_id == post_id){
-          this.numLikes++;
-        }
+        if(post_id === this.userLikes[i].post_id) this.numLikes++;
       }
-      if(this.numLikes%2!=0){
-        this.counter-=2;
-      }
-      this.counter++;
-
+      this.counter = +count;
+      if(this.numLikes%2==0)this.counter++;
+      else this.counter--;
       this.dataService.userlikespost(post_id, this.counter, this.user_id)
         .subscribe(
-          response => console.log(response),
+          response => {
+            for(let i=0;i<this.objects.length;i++){
+              this.dataService.postlikes(this.objects[i].id).subscribe(res=>{
+                this.data = res;
+                this.postLikes[i] = this.data[this.data.length-1];
+              });
+            }
+            this.getUserLikes();
+          },
           error => console.log(error)
         );
-
     }
 
   }

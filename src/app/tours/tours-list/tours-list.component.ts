@@ -112,41 +112,33 @@ export class ToursListComponent implements OnInit {
   }
   counter:number;
   numLikes:number = 0;
-  xpost_id:number;
-  userLikesPost(post_id:any, count:any){
+
+  userLikesPost(post_id:any, count:number){
+    this.numLikes = 0;
     if(!this.user_id){
       alert('Ви не увійшли в аккаунт');
     } else {
-    this.getUserLikes();
-    console.log(post_id);
-    console.log(count);
-    this.counter = +count;
-
-    for(let i = 0; i < this.userLikes.length; i++){
-      if(this.userLikes[i].post_id == post_id){
-        this.numLikes++;
+      for(let i = 0; i < this.userLikes.length; i++){
+        if(post_id === this.userLikes[i].post_id) this.numLikes++;
       }
+      this.counter = +count;
+      if(this.numLikes%2==0)this.counter++;
+      else this.counter--;
+      this.dataService.userlikespost(post_id, this.counter, this.user_id)
+        .subscribe(
+          response => {
+            for(let i=0;i<this.routes.length;i++){
+              this.dataService.postlikes(this.routes[i].id).subscribe(res=>{
+                this.data = res;
+                this.postLikes[i] = this.data[this.data.length-1];
+              });
+            }
+            this.getUserLikes();
+          },
+          error => console.log(error)
+        );
     }
-    if(this.numLikes%2!=0){
-      this.counter-=2;
-    }
-    this.counter++;
 
-    this.dataService.userlikespost(post_id, this.counter, this.user_id)
-      .subscribe(
-        response => console.log(response),
-        error => console.log(error)
-      );
-    }
-  }
-  route_type_1:string = "";
-  somefunc1(e) {
-    if(e.target.checked){
-      this.route_type_1 = "піший";
-      console.log("піший")
-    } else {
-      this.route_type_1 = "";
-    }
   }
 
 }

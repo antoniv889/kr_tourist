@@ -32,7 +32,36 @@ export class NgbdModalContent {
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  styles: [`
+    /deep/ .carousel-control-next:hover{
+      background-color: #0000004d;
+    }
+    /deep/ .carousel-control-next{
+      width:150px;
+      z-index: 100;
+    }
+
+    /deep/ .carousel-control-prev:hover{
+      background-color: #0000004d;
+    }
+    /deep/ .carousel-control-prev{
+      width:150px;
+    }
+    /deep/ .carousel-control-next-icon{
+      /* background-color: black; */
+
+      height: 80px;
+      width: 35px;
+    }
+    /deep/ .carousel-control-prev-icon{
+      /* background-color: black; */
+
+      height: 80px;
+      width: 35px;
+    }
+
+  `]
 })
 export class HomeComponent implements OnInit {
   title = 'kriviyRih';
@@ -40,8 +69,8 @@ export class HomeComponent implements OnInit {
   paused = false;
   unpauseOnArrow = false;
   pauseOnIndicator = false;
-  showNavigationArrows = false;
-  pauseOnHover = false;
+  showNavigationArrows = true;
+  pauseOnHover = true;
   showNavigationIndicators = false;
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
   togglePaused() {
