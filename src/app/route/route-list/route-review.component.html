@@ -1,11 +1,12 @@
 <div class="d-none d-sm-block" style="background-color:#002b54; display: block; height: 109px;">
 </div>
+<div *ngIf="routes.length>0">
 <!-- desktop -->
 <div class="d-none d-sm-block">
   <ngb-carousel class="carousel" #carousel [interval]="6000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
 
       <ng-template ngbSlide *ngFor="let route of routes; index as i " >
-        <div class="picsum-img-wrapper " style="background-image: url({{routeImages[i]}}); background-repeat: no-repeat;">
+        <div class="picsum-img-wrapper " style="background-image:  url(http://kr.travel{{route.main_img.url}}); background-repeat: no-repeat;">
           <div class="container p-relative">
           <div class="bottom-left">
             <h3 class="text-uppercase">{{ route.title }}</h3>
@@ -27,7 +28,7 @@
 <div class="d-none d-block d-sm-none">
   <ngb-carousel class="carousel" #carousel [interval]="6000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
     <ng-template ngbSlide *ngFor="let route of routes; index as i" >
-      <div class="picsum-img-wrapper " style="background-image: url({{routeImages[i]}}); background-repeat: no-repeat;">
+      <div class="picsum-img-wrapper " style="background-image: url(http://kr.travel{{route.main_img.url}}); background-repeat: no-repeat;">
         <div class="container p-relative">
         <div class="bottom-left">
           <h3 class="text-uppercase">{{ route.title }}</h3>
@@ -97,7 +98,7 @@
                                    (route.route_type==route_type_4 && route_type_4!='') ||
                                    (route_type_1=='' && route_type_2=='' && route_type_3=='' && route_type_4==''); else ">
           <div>
-            <img class="card-img-top" src="{{routeImages[i]}}">
+            <img class="card-img-top" src="http://kr.travel{{route.main_img.url}}"  routerLink="{{route.id}}">
             <div class="card-body">
               <h5 class="card-title"><h3 routerLink="{{route.id}}">{{ route.title }} </h3></h5>
               <p class="card-text">
@@ -106,19 +107,12 @@
                 <b>cкладність: </b>{{route.difficulty}} <br>
               </p>
             </div>
-            <div class="card-footer"  *ngIf="postLikes[i] && postLikes[i].count">
+            <div class="card-footer">
               <p style="transform: translate(0px, -4px);">{{route.created_at | slice:0:10}}</p>
                 <span style="position: relative; bottom: 48px; left: 90%;">
-                  <i class="fa fa-thumbs-up fa-lg"  (click)="userLikesPost(route.id, postLikes[i].count)" id="thumb" ></i>
-                  <p style="display: inline; font-size: 20px; margin-left:8px;">{{postLikes[i].count}}</p>
+                  <i class="fa fa-thumbs-up fa-lg"  (click)="userLikesPost(route.id, postLikes[i], i)" id="thumb" ></i>
+                  <p style="display: inline; font-size: 20px; margin-left:8px;">{{postLikes[i]}}</p>
                 </span>
-            </div>
-            <div class="card-footer" *ngIf="!postLikes[i]">
-              <p style="transform: translate(0px, -4px);">{{route.created_at | slice:0:10}}</p>
-              <span style="position: relative; bottom: 48px; left: 90%;">
-                <i class="fa fa-thumbs-up fa-lg"  (click)="userLikesPost(route.id, 0)" id="thumb" ></i>
-                <p style="display: inline; font-size: 20px; margin-left:8px;">0</p>
-              </span>
             </div>
           </div>
         </div>
@@ -133,7 +127,7 @@
     <div  id="card" >
       <div>
 
-        <img class="card-img-top" src="{{routeImages[i]}}">
+        <img class="card-img-top" src="http://kr.travel{{route.main_img.url}}"  routerLink="{{route.id}}">
         <div class="card-body">
           <h5 class="card-title"><h3 routerLink="{{route.id}}">{{ route.title }} </h3></h5>
           <p class="card-text">
@@ -142,19 +136,12 @@
             <b>cкладність: </b>{{route.difficulty}} <br>
           </p>
         </div>
-        <div class="card-footer"  *ngIf="postLikes[i] && postLikes[i].count">
+        <div class="card-footer">
           <p style="transform: translate(0px, -4px);">{{route.created_at | slice:0:10}}</p>
             <span style="position: relative; bottom: 48px; left: 90%;">
-              <i class="fa fa-thumbs-up fa-lg"  (click)="userLikesPost(route.id, postLikes[i].count)" id="thumb" ></i>
-              <p style="display: inline; font-size: 20px; margin-left:8px;">{{postLikes[i].count}}</p>
+              <i class="fa fa-thumbs-up fa-lg"  (click)="userLikesPost(route.id, postLikes[i], i)" id="thumb" ></i>
+              <p style="display: inline; font-size: 20px; margin-left:8px;">{{postLikes[i]}}</p>
             </span>
-        </div>
-        <div class="card-footer" *ngIf="!postLikes[i]">
-          <p style="transform: translate(0px, -4px);">{{route.created_at | slice:0:10}}</p>
-          <span style="position: relative; bottom: 48px; left: 90%;">
-            <i class="fa fa-thumbs-up fa-lg"  (click)="userLikesPost(route.id, 0)" id="thumb" ></i>
-            <p style="display: inline; font-size: 20px; margin-left:8px;">0</p>
-          </span>
         </div>
         <br><br>
       </div>
@@ -164,6 +151,10 @@
   </div>
 </div>
 <br><br>
+</div>
+<div *ngIf="routes.length<1">
+  <p style="text-align: center; margin-top: 14%">Поки що, тут нічого немає</p>
+</div>
 <div id="mobile">
   <div class="bottomRight">
     <a href="#"><img src="assets/img/google.png"  height="50px"  class="pr-2 "></a>

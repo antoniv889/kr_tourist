@@ -6,9 +6,13 @@
   <div class="row">
     <div class="col-sm" >
       <img src="{{imgUrl}}" width="100%">
-      <h1>lorem</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-      <a href="https://www.google.com/maps/place/%D0%9F'%D1%8F%D0%BD%D0%B8%D0%B9+%D1%80%D0%B8%D0%BD%D0%BE%D0%BA/@48.6010965,22.2907555,15.38z/data=!4m5!3m4!1s0x4739190f635c44b9:0x70640d1d8269cf8f!8m2!3d48.6026799!4d22.2890925">Відкрити на карті</a>
+      <h1>{{hotel.title}}</h1>
+      <p>{{hotel.desc}}</p>
+      <hr>
+      <p><b> Рейтинг: </b> {{hotel.google_rating}}</p>
+      <p><b> Контакти: </b> {{hotel.address}}</p>
+      <a href="{{hotel.gps}}">Cайт</a>
+
     </div>
   </div><hr>
   <h3>Коментарії:</h3>

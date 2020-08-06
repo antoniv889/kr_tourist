@@ -18,7 +18,7 @@ export class AttractionsComponent implements OnInit {
     this.getCategories();
   }
   getCategories(){
-    this.dataService.getCategories(2).subscribe(res=>{
+    this.dataService.getCategories(3).subscribe(res=>{
       this.categories = res;
       console.log(this.categories);
     })

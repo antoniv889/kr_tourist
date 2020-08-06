@@ -8,20 +8,13 @@
     <div  id="card-row">
 
       <h3 routerLink="{{object.id}}">{{ object.title }} </h3>
-      <img src={{routeImages[i]}} width="100%" height="390px">
-      <div class="bottomblock" *ngIf="postLikes[i] && postLikes[i].count">
-        <p>{{object.created_at | slice:0:10}}
-        <span style="right: 5px; position: absolute">
-          <i class="fa fa-thumbs-up fa-lg"  (click)="userLikesPost(object.id, postLikes[i].count)" id="thumb" ></i>
-          <p style="display: inline;font-size: 20px; margin-left:8px;">{{postLikes[i].count}}</p>
-        </span></p>
-      </div>
-      <div class="bottomblock" *ngIf="!postLikes[i]">
-        <p>{{object.created_at | slice:0:10}}
-        <span style="right: 5px; position: absolute">
-          <i class="fa fa-thumbs-up fa-lg"  (click)="userLikesPost(object.id, 0)" id="thumb" ></i>
-          <p style="display: inline;font-size: 20px; margin-left:8px;">0</p>
-        </span></p>
+      <img src="http://kr.travel{{object.main_img.url}}" width="100%" height="390px" routerLink="{{object.id}}">
+      <div class="card-footer">
+        <p style="transform: translate(0px, -4px);">{{object.created_at | slice:0:10}}</p>
+          <span style="position: relative; bottom: 48px; left: 90%;">
+            <i class="fa fa-thumbs-up fa-lg"  (click)="userLikesPost(object.id, postLikes[i], i)" id="thumb" ></i>
+            <p style="display: inline; font-size: 20px; margin-left:8px;">{{postLikes[i]}}</p>
+          </span>
       </div>
   </div>
   </div>

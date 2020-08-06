@@ -54,6 +54,10 @@ export class DataService {
   postlikes(post_id){
     return this.httpCLient.get('http://kr.travel/api/getpostlikes/'+post_id);
   }
+  getLikes(){
+    return this.httpCLient.get('http://kr.travel/api/getlikes');
+
+  }
   deleteuserlikes(id){
     return this.httpCLient.get('http://kr.travel/api/destroyserlike/'+id);
   }

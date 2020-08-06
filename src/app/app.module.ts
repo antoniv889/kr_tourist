@@ -25,13 +25,14 @@ import { InViewportModule } from 'ng-in-viewport';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './account/registration/registration.component';
 import { FormsModule } from '@angular/forms';
-import { GidsComponent } from './gids/gids.component';
+import { GidsComponent } from './gid/gids/gids.component';
 import { LoginComponent } from './account/login/login.component';
 import { AccountComponent } from './account/account/account.component';
 import { AuthGuard } from './auth.guard';
 import { ToursListComponent } from './tours/tours-list/tours-list.component';
 import { ToursPageComponent } from './tours/tours-page/tours-page.component';
-
+import { CKEditorModule } from 'ckeditor4-angular';
+import { GidPageComponent } from './gid/gid-page/gid-page.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'travel-routes', component: TravelRoutesComponent },
@@ -51,7 +52,7 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent, canActivate: [AuthGuard]},
   { path: 'tourslist', component: ToursListComponent},
   { path: 'tourslist/:id', component: ToursPageComponent},
-
+  { path: 'gids/:id', component: GidPageComponent },
 
 
 ];
@@ -96,6 +97,8 @@ const routes: Routes = [
 
     ToursPageComponent,
 
+    GidPageComponent,
+
 
   ],
   imports: [
@@ -111,6 +114,7 @@ const routes: Routes = [
     InViewportModule,
     HttpClientModule,
     FormsModule,
+    CKEditorModule,
   ],
   providers: [DataService, AuthService, AuthGuard],
   bootstrap: [AppComponent]

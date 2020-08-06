@@ -2,7 +2,7 @@
 <div class="d-none d-sm-block">
   <ngb-carousel class="carousel" #carousel [interval]="6000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
       <ng-template ngbSlide *ngIf="routes[routesLength-1]">
-        <div class="picsum-img-wrapper" style="background-image: url({{routeImages[routesLength-1]}}); background-repeat: no-repeat;">
+        <div class="picsum-img-wrapper" style="background-image: url(http://kr.travel{{routes[routesLength-1].main_img.url}}); background-repeat: no-repeat;">
           <b class="sideVerticalText">новий маршрут</b>
           <div class="container p-relative">
           <div class="bottom-left">
@@ -19,7 +19,7 @@
 
 
       <ng-template ngbSlide *ngIf="routes[routesLength-2]">
-        <div class="picsum-img-wrapper" style="background-image: url({{routeImages[routesLength-2]}}); background-repeat: no-repeat;">
+        <div class="picsum-img-wrapper" style="background-image: url(http://kr.travel{{routes[routesLength-2].main_img.url}});  background-repeat: no-repeat;">
           <div class="container p-relative">
           <div class="bottom-left">
             <h3 class="text-uppercase"> {{routes[routesLength-2].title}} </h3>
@@ -41,7 +41,7 @@
   <ngb-carousel class="carousel" #carousel [interval]="6000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
     <ng-template ngbSlide id="one" *ngIf="routes[routesLength-1]">
 
-      <div class="picsum-img-wrapper" style="background-image: url({{routeImages[routesLength-1]}}); background-repeat: no-repeat;">
+      <div class="picsum-img-wrapper" style="background-image:  url(http://kr.travel{{routes[routesLength-1].main_img.url}});  background-repeat: no-repeat;">
         <b class="sideVerticalText">новий маршрут</b>
         <div class="container p-relative">
         <div class="bottom-left">
@@ -57,7 +57,7 @@
       </div>
     </ng-template>
     <ng-template ngbSlide id="two" *ngIf="routes[routesLength-2]">
-      <div class="picsum-img-wrapper" style="background-image: url({{routeImages[routesLength-2]}}); background-repeat: no-repeat;">
+      <div class="picsum-img-wrapper" style="background-image:  url(http://kr.travel{{routes[routesLength-2].main_img.url}});  background-repeat: no-repeat;">
         <div class="container p-relative">
         <div class="bottom-left">
           <h3 class="text-uppercase"> {{routes[routesLength-2].title}} </h3>
@@ -125,16 +125,14 @@
 <!-- desktop -->
 <div id="gids" class="d-none d-sm-block">
   <br>
-  <div class="container">
+  <div class="container ">
     <h3 class="text-primary ">Місцеві гіди</h3><br>
-
-    <div class="container">
       <div *ngFor="let gid of gids;index as i"  style="width:33%; display: inline-block;">
         <div *ngIf="i<3">
-          <div class="card gid-card card-desktop" >
-            <img class="card-img-top" src="{{gidImages[i]}}" height="300px" >
-            <div class="card-body" style="height: 200px;">
-              <h1>{{gid.name}}</h1>
+          <div class="card gid-card card-desktop" routerLink="/gids/{{gid.id}}">
+            <img  src="http://kr.travel{{gid.img.url}}" id="gidImage">
+            <div class="card-body" id="gid-content">
+              <h3>{{gid.name}}</h3>
               <p class="card-text" style="word-wrap: break-word;">
                   {{ (gid.desc.length>100)? (gid.desc | slice:0:100)+'...':(gid.desc) }}
               </p>
@@ -142,7 +140,6 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
   <br><br>
 </div>
@@ -158,7 +155,7 @@
       <div *ngFor="let gid of gids;index as i">
         <div *ngIf="i<3">
           <div class="card gid-card" >
-            <img class="card-img-top" src="{{gidImages[i]}}" >
+            <img class="card-img-top" src="http://kr.travel{{gid.img.url}}">
             <div class="card-body" style="height: 150px;">
               <h1>{{gid.name}}</h1>
               <p class="card-text" style="word-wrap: break-word;">
@@ -182,7 +179,7 @@
     <div *ngFor="let event of events; index as i" style="width:25%; display: inline-block; ">
       <div *ngIf="i<4">
         <div class="card card-desktop">
-          <img class="card-img-top" src="{{eventImages[i]}}" height="200px" routerLink="/events/{{event.id}}">
+          <img class="card-img-top" src="http://kr.travel{{event.main_img.url}}" height="200px" routerLink="/events/{{event.id}}">
           <div class="card-body" routerLink="/events/{{event.id}}" >
             <h3>{{event.title}}</h3>
             <p style="word-wrap: break-word;">
@@ -205,7 +202,7 @@
   <div *ngFor="let event of events; index as i">
     <div *ngIf="i<3">
       <div class="card">
-        <img class="card-img-top" src="{{eventImages[i]}}" routerLink="/events/{{event.id}}">
+        <img class="card-img-top" src="http://kr.travel{{event.main_img.url}}" routerLink="/events/{{event.id}}">
         <div class="card-body" routerLink="/events/{{event.id}}" >
           <h3>{{event.title}}</h3>
           <p style="word-wrap: break-word;">

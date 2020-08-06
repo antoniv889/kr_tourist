@@ -144,9 +144,27 @@ a {
 .gid-card {
   background-color: #002b54;
   color: white;
-
+  border: none;
 }
+.gid-card:hover{
+  background-color:  #012444;
+}
+
 .btnEvent{
   background-color: #002b54;
   margin-top: 20px;
+}
+#gidImage{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+  transform: translate(-50%, 18px);
+  margin-left: 50%;
+}
+#gid-content{
+  height: 200px;
+  text-align: center;
+  margin-top: 30px;
+  float: left;
+  position: relative;
 }

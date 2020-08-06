@@ -33,6 +33,7 @@
 }
 .card-body{
   background-color: #e8e8e8;
+  min-height: 280px;
 }
 .card-footer {
   background-color: #cecece;

@@ -103,53 +103,29 @@ export class HomeComponent implements OnInit {
     this.getPosts();
     this.getEvents();
     this.getGids();
-
   }
   getCategories(){
     this.dataService.getCategories(1).subscribe(res=>{
       this.categories = res;
-      console.log(this.categories);
     })
   }
   routesLength:number;
   getPosts(){
     this.dataService.getPostList(1).subscribe(res=>{
       this.routes = res;
-      console.log(this.routes);
       this.routesLength = this.routes.length;
-
-      for(let i=0;i<this.routes.length;i++){
-        this.dataService.getMediaUrl(this.routes[i].id).subscribe(res=>{
-          this.routeImages[i] = res;
-        });
-      }
     });
   }
   gids:any = [];
-  gidImages:any = [];
   getGids(){
     this.dataService.getGids().subscribe(res=>{
       this.gids = res;
-      console.log(this.gids);
-      for(let i = 0; i < this.gids.length; i++){
-        this.dataService.getGid(this.gids[i].id).subscribe(response=>{
-          this.gidImages[i] = response[1];
-
-        })
-      }
     })
   }
   events:any = [];
-  eventImages: any = [];
   getEvents(){
-    this.dataService.getPostList(6).subscribe(res=>{
+    this.dataService.getPostList(5).subscribe(res=>{
       this.events = res;
-      for(let i=0;i<4;i++){
-        this.dataService.getMediaUrl(this.events[i].id).subscribe(res=>{
-          this.eventImages[i] = res;
-        });
-      }
-      console.log(this.eventImages);
     })
   }
 

@@ -1,0 +1,45 @@
+
+#mobile{
+  background-color:#002b54;
+  height: 400px;
+  margin-top: 20%;
+}
+.bottomRight{
+  position: relative;
+  top:85%;
+  text-align: right;
+  font-size: 18px;
+}
+
+.card{
+  margin:15px;
+}
+#gidImage{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+  transform: translate(-50%, 18px);
+  margin-left: 50%;
+}
+#gid-content{
+  height: 200px;
+  text-align: center;
+  margin-top: 30px;
+  float: left;
+  position: relative;
+}
+.card-desktop {
+  margin-right: 10px;
+}
+.card-body{
+  height: 170px;
+}
+.gid-card {
+  background-color: #003465;
+  color: white;
+  border: none;
+  border-radius: 16px;
+}
+.gid-card:hover{
+  background-color:  #012444;
+}

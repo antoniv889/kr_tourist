@@ -1,0 +1,23 @@
+<div class="d-none d-sm-block" style="background-color:#002b54; display: block; height: 109px;">
+</div>
+<div class="container">
+  <br><br>
+  <img src="{{imgUrl}}" width="600px">
+  <div id="content">
+    <h3>{{gid.name}}</h3><br>
+    <p>{{gid.desc}}</p>
+    <b>Контакти:</b>
+    <p>{{gid.contacts}}</p>
+    <a *ngIf="gid.link_1" href="{{gid.link_1}}">Facebook</a><br>
+    <a *ngIf="gid.link_2" href="{{gid.link_2}}">Відвідати сайт</a>
+  </div>
+</div>
+
+<br><br>
+
+<div id="mobile">
+  <div class="bottomRight">
+    <a href="#"><img src="assets/img/google.png"  height="50px"  class="pr-2 "></a>
+    <a href="#"><img src="assets/img/appstore.png"  height="50px" class="pr-2"></a>
+  </div>
+</div>
